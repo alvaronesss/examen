@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_word.c                                       :+:      :+:    :+:   */
+/*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aporras- <aporras-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 19:02:09 by aporras-          #+#    #+#             */
-/*   Updated: 2025/02/20 14:20:50 by aporras-         ###   ########.fr       */
+/*   Created: 2025/02/13 21:35:42 by aporras-          #+#    #+#             */
+/*   Updated: 2025/02/13 21:35:45 by aporras-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
+#include<stdio.h>
 
-void palabras(char *str)
+int is_power_of_2(unsigned int n)
 {
-        int i = 0;
+        if (n <= 0)
+        {
+                return(0);
+        }
+        while(n % 2 == 0)
+        {
+                n = n / 2;
+        }
 
-        while(str[i] == ' ' || str[i] == '\t')
+        if (n == 1)
         {
-                i++;
+                return(1);
         }
-        while(str[i] && str[i] != ' ' && str[i] != '\t')
-        {
-                
-                write(1, &str[i], 1);
-                i++;
-        }
-        write(1, "\n", 1);
+        else
+                return(0);
+        return(n);
 }
 
-int main(int argc, char **argv)
+int main()
 {
-        if(argc == 2)
-        {
-                palabras(argv[1]);
-        }
-        write(1, "\n", 1);
+        printf("%d", is_power_of_2(64));
 }
+

@@ -1,44 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aporras- <aporras-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 12:50:24 by aporras-          #+#    #+#             */
-/*   Updated: 2025/02/19 23:27:02 by aporras-         ###   ########.fr       */
+/*   Created: 2025/02/17 14:15:20 by aporras-          #+#    #+#             */
+/*   Updated: 2025/02/17 14:50:41 by aporras-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<stdlib.h>
+#include<unistd.h>
+#include<stdio.h>
 
-#include <unistd.h>
-
-char	*ft_strpbrk(const char *s1, const char *s2)
+char *ft_strdup(char *src)
 {
 	int i = 0;
-	int j;
+	char *str;
 
-	while (s1[i])
+	while(src[i])
 	{
-		j = 0;
-		while (s2[j])
-		{
-			if (s1[i] == s2[j])
-			{
-				write(1, &s1[i], 1); // Corrige el uso de write
-				return ((char *)&s1[i]); // Devuelve la dirección del primer carácter encontrado
-			}
-			j++;
-		}
 		i++;
 	}
-	return (NULL); // Devuelve NULL si no hay coincidencias
+	str = malloc((i + 1) * sizeof(char));
+	i = 0;
+	
+	while(src[i])
+	{
+		str[i] = src[i];
+		i++;
+	}
+	return(str);
 }
 
-int main(int argc, char **argv)
+int main(int argc , char **argv)
 {
-	if(argc == 3)
+	if (argc == 2)
 	{
-		ft_strpbrk(argv[1], argv[2]);
+		printf( "la frase:	%s\n", ft_strdup(argv[1]));
 	}
 }

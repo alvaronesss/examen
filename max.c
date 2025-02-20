@@ -16,8 +16,8 @@ int	max(int *tab, unsigned int len)
 }
 int main()
 {
-	int tab[] = {1 ,2 ,2};
-	unsigned int len = 3;
+	int tab[] = {1 ,2 ,2, 54, 12, 1, 45};
+	unsigned int len = 7;
 	printf("%i", max(tab, len));
 	return (0);
 }
